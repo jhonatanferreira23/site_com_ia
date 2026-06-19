@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Street Fire de Zombie</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle, #1a1a1a, #000);
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      padding: 30px;
+      background: #111;
+      border-bottom: 2px solid red;
+    }
+
+    h1 {
+      color: red;
+      margin: 0;
+      font-size: 40px;
+    }
+
+    .game {
+      margin-top: 40px;
+    }
+
+    .zombie {
+      font-size: 80px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s;
+    }
+
+    .zombie:active {
+      transform: scale(0.9);
+    }
+
+    .score {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: red;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    button:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Street Fire de Zombie</h1>
+  <p>Sobreviva clicando nos zumbis!</p>
+</header>
+
+<div class="game">
+  <div class="zombie" onclick="killZombie()">🧟</div>
+
+  <div class="score">
+    Pontuação: <span id="score">0</span>
+  </div>
+
+  <button onclick="resetGame()">Reiniciar</button>
+</div>
+
+<script>
+  let score = 0;
+
+  function killZombie() {
+    score++;
+    document.getElementById("score").innerText = score;
+
+    // troca o emoji aleatoriamente
+    const zombies = ["🧟", "🧟‍♂️", "🧟‍♀️", "💀"];
+    document.querySelector(".zombie").innerText =
+      zombies[Math.floor(Math.random() * zombies.length)];
+  }
+
+  function resetGame() {
+    score = 0;
+    document.getElementById("score").innerText = score;
+    document.querySelector(".zombie").innerText = "🧟";
+  }
+</script>
+
+</body>
+</html>
